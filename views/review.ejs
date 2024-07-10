@@ -8,34 +8,75 @@
     <script defer src="/public/js/review.js"></script>
 </head>
 <body>
-    <h1> <%= title %> </h1>
     <main id="movie_info_container">
         <section id="movie_poster">
-            movie poster
+            <img src="/public/img/poster.jpg" alt="해리포터와 마법사의 돌">
         </section>
 
         <section id="movie_info_sub_container">
             <article class="movie_info_01">
-                <div class="movie_description">
-                    영화 내용
+                <div class="movie_description movie_common">
+                    <p class="info_sub_title">
+                        줄거리
+                    </p>
+                    <p class="info_sub_content">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum excepturi quos, repellendus nobis quidem quibusdam.
+                    </p>
                 </div>
 
-                <div class="movie_cast">
-                    출연자
+                <div class="movie_cast movie_common">
+                    <p class="info_sub_title">
+                        출연자
+                    </p>
+                    <ul class="cast_list">
+                        <li>홍길동</li>
+                        <li>장발장</li>
+                        <li>이길동</li>
+                        <li>정발장</li>
+                        <li>고길동</li>
+                        <li>박발장</li>
+                    </ul>
                 </div>
 
-                <div class="movie_review">
-                    영화 리뷰
-                    <button type="button">
-                        리뷰 작성
-                    </button>
+                <div class="movie_review movie_common">
+                    <div class="info_sub_box">
+                        <span class="info_sub_title">영화 리뷰</span>
+                        <button type="button" class="button_open" onclick="postReview()">
+                            add your review 
+                        </button>
+                    </div>
+                    <div class="movie_review_modal_bg hidden">
+                        <div class="movie_review_modal">
+                            <form action="" name="review_post">
+                                <textarea name="review_post" id=""></textarea>
+                                <button type="submit">제출</button>
+                                <button type="button" class="button_close" onclick="closeModal()">X</button>
+                            </form>
+                        </div>
+                    </div>
 
+                    <ul class="review_post_container">
+                        <li>
+                            <p>리뷰어 닉네임</p>
+                            <p>리뷰 내용</p>
+                        </li>
+                        <li>
+                            <p>리뷰어 닉네임</p>
+                            <p>리뷰 내용</p>
+                        </li>
+                    </ul>
                 </div>
             </article>
 
             <article class="movie_info_02">
-                <div class="moive_release">
+                <div class="movie_release">
                     영화 개봉일
+                </div>
+                <div class="movie_genre">
+                    영화 장르
+                </div>
+                <div class="movie_director">
+                    영화 감독
                 </div>
             </article>
         </section>

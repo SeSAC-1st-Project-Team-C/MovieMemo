@@ -1,53 +1,49 @@
-h1{
-    color: green;
+*{
+    box-sizing: border-box;
+    color: #fff;
 }
 
+body{
+    background-color: #141414;
+}
+
+li{
+    list-style: none;
+}
+/* 모든것을 담고 있는 컨테이너*/
 #movie_info_container{
     width: 80%;
     max-width: 1600px;
     margin: 0 auto;
-    background: yellow;
 }
 
+
+
+/* 영화 포스터 이미지 섹션 */
 #movie_poster{
     width: 100%;
     max-width: inherit;
-    height: 500px;
-    background: lime;
+    text-align: center;
+    margin-bottom: 100px;
 }
 
+
+
+/* 영화 정보 섹션 */
 #movie_info_sub_container{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: violet;
 }
 
+
+
+/* 영화 정보 섹션 안에서 .movie_info_01, 02 2개의 영역으로 나뉨 */
 .movie_info_01{
     width: 65%;
     max-width: 1050px;
-    background: beige;
+    /* background: beige; */
 }
-
-.movie_description{
-    width: 100%;
-    margin-bottom: 20px;
-    background: lightcyan;
-}
-.movie_cast{
-    width: 100%;
-    margin-bottom: 20px;
-    background: lightcyan;
-}
-
-.movie_review{
-    width: 100%;
-    background: lightcyan;
-}
-
-
-
-
 
 .movie_info_02{
     width: 32%;
@@ -55,7 +51,118 @@ h1{
     background: lightblue;
 }
 
-.moive_release{
+
+
+/* 영화정보 내에서 공통으로 쓰이는 클래스 */
+.movie_common{
+    /*  각 영화 정보들의 외형적으로 공통인 것들 */
     width: 100%;
-    background: lightgreen;
+    margin-bottom: 20px;
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid #262626;
+    background-color: #1A1A1A;
+}
+.info_sub_title{
+    /* 각 정보 제목들 */
+    color: #999;
+}
+.info_sub_content{
+    /* 각 정보 내용들 */
+    margin-top: 30px;
+}
+
+
+
+.movie_description{
+
+}
+
+
+
+.movie_cast{
+}
+.cast_list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-inline-start: 0;
+}
+
+
+
+.movie_review{
+
+}
+
+.button_open{
+    color: #fff;
+    background-color: #B20710;
+}
+.info_sub_box{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+.movie_release{
+    width: 100%;
+    margin-bottom: 30px;
+    background: hotpink;
+}
+
+.movie_genre{
+    width: 100%;
+    margin-bottom: 30px;
+    background: aquamarine;
+}
+
+.movie_director{
+    width: 100%;
+    margin-bottom: 30px;
+    background: blueviolet;
+}
+
+/* 리뷰 작성 모달 창 */
+.movie_review_modal_bg {
+    /*팝업 배경*/
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: rgba(0,0,0,0.5);
+}
+.movie_review_modal {
+    /*팝업*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+}
+.button_close {
+    display: block;
+    padding: 10px 20px;
+    background-color: #B20710;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+    background-color: white;
 }
