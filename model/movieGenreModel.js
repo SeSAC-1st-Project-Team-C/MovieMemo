@@ -1,13 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
-  /**
-   * MovieGenre 영화 장르에 관한 테이블
-   */
   const MovieGenre = sequelize.define('MovieGenre', {
     movieId: {
       type: DataTypes.BIGINT,
       allowNull: false,
       references: {
-        model: 'Movie',
+        model: 'Movie',  // 'Movie'로 수정
         key: 'movieId'
       }
     },

@@ -19,7 +19,7 @@ router.get('/:movieTitle', controller.getMovie);
 // router.get('/movieList', controller.getMovieList);
 
 // 특정 장르로 영화 리스트 불러오기
-router.get('/genreList/:genreId', controller.getMovieTyp);
+router.get('/genreList/:genreId', controller.getMovieType);
 
 // 영화 정보 추가 생성 (관리자 권한 필요)
 router.post('/', checkAdminAuth, controller.postMovie);
