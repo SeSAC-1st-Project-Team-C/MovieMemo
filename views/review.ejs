@@ -6,10 +6,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="/public/css/review.css">
     <script defer src="/public/js/review.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
     <main id="movie_info_container">
         <section id="movie_poster">
+            <div class="poster_box">
+                <div class="movie_title">
+                    해리포터와 마법사의 돌
+                </div>
+            </div>
             <img src="/public/img/poster.jpg" alt="해리포터와 마법사의 돌">
         </section>
 
@@ -42,7 +49,7 @@
                     <div class="info_sub_box">
                         <span class="info_sub_title">영화 리뷰</span>
                         <button type="button" class="button_open" onclick="postReview()">
-                            add your review 
+                            + add your review 
                         </button>
                     </div>
                     <div class="movie_review_modal_bg hidden">
@@ -54,7 +61,6 @@
                             </form>
                         </div>
                     </div>
-
                     <ul class="review_post_container">
                         <li>
                             <p>리뷰어 닉네임</p>
@@ -69,18 +75,45 @@
             </article>
 
             <article class="movie_info_02">
-                <div class="movie_release">
-                    영화 개봉일
+                <div class="movie_release movie_common">
+                    <p class="info_sub_title">
+                        개봉일
+                    </p>
+                    <p>
+                        2222.02.22
+                    </p>
                 </div>
-                <div class="movie_genre">
-                    영화 장르
+
+                <div class="moive_rating movie_common">
+                    <p class="info_sub_title">
+                        별점
+                    </p>
+                    <p>
+                        별점 매길 곳
+                    </p>
                 </div>
-                <div class="movie_director">
-                    영화 감독
+
+                <div class="movie_genre movie_common">
+                    <p class="info_sub_title">
+                        영화 장르
+                    </p>
+                    <ul class="genre_list">
+                        <li>호러</li>
+                        <li>로맨스</li>
+                        <li>코미디</li>
+                    </ul>
+                </div>
+                <div class="movie_director movie_common">
+                    <p class="info_sub_title">
+                        영화 감독
+                    </p>
+                    <span class="director_name">
+                        장발장
+                    </span>
                 </div>
             </article>
         </section>
-
     </main>
+
 </body>
 </html>

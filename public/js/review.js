@@ -20,3 +20,10 @@ const closeModal = () => {
     modal.classList.add('hidden');
     modal.classList.remove('visible');
 }
+
+$('.autoplay').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  });
