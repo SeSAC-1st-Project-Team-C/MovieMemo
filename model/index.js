@@ -19,9 +19,9 @@ if (config.use_env_variable) {
 const Movie = require("./movieModel")(sequelize, Sequelize);
 const Genre = require("./genreModel")(sequelize, Sequelize);
 const MovieGenre = require("./movieGenreModel")(sequelize, Sequelize);
-const Member = require("./memberModel")(sequelize, Sequelize);
-const Review = require("./reviewModel")(sequelize, Sequelize);
-const Report = require("./reportModel")(sequelize, Sequelize);
+// const Member = require("./memberModel")(sequelize, Sequelize);
+// const Review = require("./reviewModel")(sequelize, Sequelize);
+// const Report = require("./reportModel")(sequelize, Sequelize);
 
 // db 객체에 모델 추가
 db.sequelize = sequelize;
@@ -30,20 +30,27 @@ db.Sequelize = Sequelize;
 db.Movie = Movie;
 db.Genre = Genre;
 db.MovieGenre = MovieGenre;
-db.Member = Member;
-db.Review = Review;
-db.Report = Report;
+// db.Member = Member;
+// db.Review = Review;
+// db.Report = Report;
 
 // 모델 동기화
 const syncModels = async () => {
   await Movie.sync();
   await Genre.sync();
   await MovieGenre.sync();
-  await Member.sync();
-  await Review.sync();
-  await Report.sync();
+  // await Member.sync();
+  // await Review.sync();
+  // await Report.sync();
 };
 
 db.syncModels = syncModels;
+
+// 모델 간 관계 설정
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
 module.exports = db;

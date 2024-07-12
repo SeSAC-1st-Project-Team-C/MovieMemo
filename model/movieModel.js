@@ -24,19 +24,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     posterUrl: {
       type: DataTypes.STRING(300),
-      allowNull: true
+      allowNull: false
     },
     vodUrl: {
       type: DataTypes.STRING(300),
-      allowNull: true
+      allowNull: false
     },
     movieInfo: {
       type: DataTypes.STRING(1000),
-      allowNull: true
+      allowNull: false
     },
     movieCast: {
       type: DataTypes.STRING(100),
-      allowNull: true
+      allowNull: false
     }
   }, {
     // 작성, 최종 수정시간 기록
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   // 모델간 관계 설정하기 
   Movie.associate = (models) => {
-    Movie.hasMany(models.Review, { foreignKey: 'movieId' });
+    // Movie.hasMany(models.Review, { foreignKey: 'movieId' });
     Movie.belongsToMany(models.Genre, { through: models.MovieGenre, foreignKey: 'movieId' });
   };
 

@@ -1,14 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controller/CMovie');
+// const auth = require('../middleware/auth');
 
-// 권한 검사
-const checkAdminAuth = (req, res, next) => {
-  if (!req.session || !req.session.token || !req.session.token.isAdmin) {
-    return res.status(403).json({ message: '접근 권한이 없습니다.' });
-  }
-  next();
-};
 
 // 기본 요청 경로 localhost:PORT/movie
 
@@ -21,13 +15,13 @@ router.get('/:movieTitle', controller.getMovie);
 // 특정 장르로 영화 리스트 불러오기
 router.get('/genreList/:genreId', controller.getMovieType);
 
-// 영화 정보 추가 생성 (관리자 권한 필요)
-router.post('/', checkAdminAuth, controller.postMovie);
+// 영화 정보 추가 생성 (관리자 권한 필요) //, auth.authenticateAdmin 추가
+router.post('/', controller.postMovie);
 
 // 영화 정보 수정하기 (관리자 권한 필요)
-router.patch('/', checkAdminAuth, controller.patchMovie);
+router.patch('/', controller.patchMovie);
 
 // 영화 정보 삭제하기 (관리자 권한 필요)
-router.delete('/', checkAdminAuth, controller.deleteMovie);
+router.delete('/', controller.deleteMovie);
 
 module.exports = router;
