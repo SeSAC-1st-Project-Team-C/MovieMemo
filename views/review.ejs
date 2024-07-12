@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="/public/css/review.css">
     <script defer src="/public/js/review.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
     <main id="movie_info_container">
@@ -55,24 +55,37 @@
                     <div class="movie_review_modal_bg hidden">
                         <div class="movie_review_modal">
                             <form action="" name="review_post">
-                                <textarea name="review_post" id=""></textarea>
+                                <textarea name="review_post" id="" cols="50" rows="20"></textarea>
                                 <button type="submit">제출</button>
                                 <button type="button" class="button_close" onclick="closeModal()">X</button>
                             </form>
                         </div>
                     </div>
-                    <ul class="review_post_container">
-                        <li>
-                            <p>리뷰어 닉네임</p>
-                            <p>리뷰 내용</p>
-                        </li>
-                        <li>
-                            <p>리뷰어 닉네임</p>
-                            <p>리뷰 내용</p>
-                        </li>
-                    </ul>
+                    <div class="swiper">
+                        <div class="review_post_container swiper-wrapper">
+                            <div class="swiper-slide">
+                                <p>유저 닉네임1</p>
+                                <p>리뷰 내용1</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <p>유저 닉네임2</p>
+                                <p>리뷰 내용2</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <p>유저 닉네임3</p>
+                                <p>리뷰 내용3</p>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+      
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
                 </div>
             </article>
+
+
 
             <article class="movie_info_02">
                 <div class="movie_release movie_common">

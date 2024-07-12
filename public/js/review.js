@@ -6,6 +6,26 @@
 
 console.log('!!!');
 
+const swiper = new Swiper('.swiper', {
+
+    slidesPerView: 2,
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+  });
+
 // const openBtn = document.querySelector('.button_open');
 // const closeBtn = document.querySelector('.button_close');
 const modal = document.querySelector('.movie_review_modal_bg');
