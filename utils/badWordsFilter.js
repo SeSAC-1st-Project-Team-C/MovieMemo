@@ -1,24 +1,30 @@
-const { CussWordFilter } = require('cuss-word-filter-ko');
-const BadWordsFilterEng = require('badwords/regexp'); // 정규표현식
+// const BadWordFilterKo = require(`badword-filter-ko`);
+// const BadWordsFilterMul = require('bad-words-next');
+// const en = require('bad-words-next/data/en.json');
+// const es = require('bad-words-next/data/es.json');
+// const fr = require('bad-words-next/data/fr.json');
+// const de = require('bad-words-next/data/de.json');
+// const ru = require('bad-words-next/data/ru.json');
+// const rl = require('bad-words-next/data/ru_lat.json');
+// const ua = require('bad-words-next/data/ua.json');
+// const pl = require('bad-words-next/data/pl.json');
+// const ch = require('bad-words-next/data/ch.json');
 
-// CussWordFilter 클래스의 인스턴스를 생성합니다.
-const cussWordFilter = new CussWordFilter({
-    // 필요에 따라 옵션을 설정할 수 있습니다.
-});
+// const BadWordsFilterMul = new BadWordsFilterMul({ data: [...en, ...es, ...fr, ...de, ...ru, ...rl, ...ua, ...pl, ...ch] });
 
-const checkBadWords = (text) => {
+// const checkBadWords = (text) => {
     
-    // 한국어 필터
-    if (cussWordFilter.isCussWord(text)) {
-        return true;
-    }
+//     // 다국어 필터
+//     if (BadWordsFilterMul.check(text)) {
+//         return true;
+//     }
 
-    // 영어 필터
-    if (BadWordsFilterEng.test(text)) {
-        return true;
-    } 
+//     // 한국어 필터
+//     const BadWordFilterKo = new BadWordFilterKo();
+//     if (BadWordFilterKo.has(text)) {
+//         return true;
+//     }
+//     return false;
+// };
 
-    return false;
-};
-
-module.exports = checkBadWords;
+// module.exports = checkBadWords;
