@@ -148,7 +148,7 @@ exports.getMovieByTitle = async (req, res) => {
     }
 
     console.timeEnd('getMovieList'); // 여기까지 도달했으면 함수는 성공적으로 작동한 것, 의도하지 않은 작동의 확인 위해 다양한 검색을 시도해 볼것
-    res.status(200).json({  // 상태코드 200 ! 성공적! 나의 작고 소중한 movies 객체를 반환한다.
+    res.status(200).render('searchResult',{  // 상태코드 200 ! 성공적! 나의 작고 소중한 movies 객체를 반환한다.
       message: '영화 목록을 성공적으로 조회했습니다.',
       data: movies
     });
@@ -238,7 +238,7 @@ exports.getMovieByActor = async (req, res) => {
     }
 
     console.timeEnd('getMovieList');
-    res.status(200).json({
+    res.status(200).render('searchResult',{
       message: '영화 목록을 성공적으로 조회했습니다.',
       data: movies
     });
