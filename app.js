@@ -44,6 +44,11 @@ app.get("/", (req, res) => {
   res.render("main");
 });
 
+//회원가입 페이지 이동
+app.get("/register", (req, res) => {
+  res.render("signup");
+});
+
 routerMiddleware(app);
 
 // 404
