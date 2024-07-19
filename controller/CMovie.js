@@ -269,18 +269,17 @@ exports.getMovieInfo = async (req, res) => {
 */
 exports.getMovieType = async (req, res) => {
   try {
-    const { genreType } = req.params;
-    
-    let genreTypeMF = searchWordFunc(genreType);
-
-    const movies = await db.Movie.findAll({ 
+    const movies = await db.Movie.findAll({
+      where: {
+        posterUrl: {
+          [db.Sequelize.Op.ne]: ''  // posterUrl이 공백이 아닌 조건
+        }
+      },
+      order: [
+        ['reviewMovieRating', 'DESC']  // reviewMovieRating 내림차순 정렬
+      ],
       include: [{
         model: db.Genre,
-        where: {
-          genreType: {
-            [db.Sequelize.Op.like]: `${genreTypeMF}`
-          }
-        },
         through: { attributes: [] }
       }]
     });
@@ -290,10 +289,9 @@ exports.getMovieType = async (req, res) => {
     }
 
     res.status(200).json({
-      message: '영화 리스트를 성공적으로 불러왔습니다.',
+      message: '평점이 높은 순으로 영화 리스트를 성공적으로 불러왔습니다.',
       data: movies
     });
-
   } catch (err) {
     errorHandler(500, res, err);
   }
