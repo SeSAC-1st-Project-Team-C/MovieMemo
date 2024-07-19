@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
     reviewMovieRating: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DataTypes.DECIMAL(3, 1),
       defaultValue: 0
     },
     movieSynopsys: {
