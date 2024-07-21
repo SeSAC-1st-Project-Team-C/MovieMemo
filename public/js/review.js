@@ -176,8 +176,8 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   if( ( 
     data.totalReviews - 6*nowPage ) < 7){ document.querySelector('.load_more').style.display = 'none';};
     data.reviews.forEach(review =>{
-    let reviewHtml = `
-            <div class="review_box">
+      let reviewHtml = `
+        <div class="review_box">
           <div class="review_user">
             <div class="user_rating">
               <span class="user_nickname">${review.Member.nick}</span>
@@ -185,11 +185,10 @@ document.addEventListener('DOMContentLoaded', async ()=>{
             </div>
             <div class="likeBox">
               <button type="button" class="likeBtn" id="likeBtn${review.reviewId}">
-                <span class="material-symbols-rounded">
-                  favorite
-                </span>
+                <div class="like-btn-img">
+                </div>
               </button>
-              <p class="likeCount">4</p>
+              <p class="likeCount">${review.likeCount}</p>
             </div>
             <button type="button" class="editBtn" id="editBtn${review.reviewId}">
               <span class="material-symbols-rounded">
@@ -242,7 +241,7 @@ moreBtn.addEventListener('click',async ()=>{
   if( 
     pagedata.totalReviews -6*nowPage < 7){ document.querySelector('.load_more').style.display = 'none';};
     pagedata.reviews.forEach(review =>{
-    let reviewHtml = `
+      let reviewHtml = `
       <div class="review_box">
       <div class="review_user">
         <div class="user_rating">
@@ -251,11 +250,10 @@ moreBtn.addEventListener('click',async ()=>{
         </div>
         <div class="likeBox">
           <button type="button" class="likeBtn" id="likeBtn${review.reviewId}">
-            <span class="material-symbols-rounded">
-              favorite
-            </span>
+            <div class="like-btn-img">
+            </div>
           </button>
-          <p class="likeCount">4</p>
+          <p class="likeCount">${review.likeCount}</p>
         </div>
         <button type="button" class="editBtn" id="editBtn${review.reviewId}">
           <span class="material-symbols-rounded">
@@ -294,7 +292,6 @@ document.querySelector('.review_section').addEventListener('click', async functi
   // 삭제 버튼 클릭 처리
   if (e.target.closest('.deleteBtn')) {
     const reviewId = e.target.closest('.deleteBtn').getAttribute('id').replace('deleteBtn','');
-    console.log('요청을 보냄');
     await axios({
       method :'delete',
       url: `/review/${reviewId}`,
@@ -312,7 +309,7 @@ document.querySelector('.review_section').addEventListener('click', async functi
     const reviewId = e.target.closest('.warningBtn').id.replace('warningBtn', '');
     // const userData = getUserNickname();
     // const userIdfromB = userData.userId;
-    console.log('경고 버튼 클릭됨, 리뷰 ID:', reviewId);
+    
     await axios({
       method : 'post',
       url: `/review/report`,
@@ -325,6 +322,27 @@ document.querySelector('.review_section').addEventListener('click', async functi
     await alert('리뷰를 신고했습니다.')
   }
 
+  if (e.target.closest('.likeBtn')) {
+    const reviewId = e.target.closest('.likeBtn').id.replace('likeBtn', '');
+    
+    await axios({
+      method : 'post',
+      url: `/review/like`,
+      data:{
+        reviewId: reviewId  
+      }
+    }).then((res)=>{
+      console.log('res.result',res.data.result);
+      if (res.data.result) {
+        
+      }
+      window.location.href = `/movie/movieInfo/${targerId}`
+    })
+    await alert('리뷰에 좋아요에 대한 요청을 전달했습니다.')
+  }
+
+  
+  
   // 수정 버튼 클릭 처리
   // if (e.target.closest('.editBtn')) {
   //   const reviewId = e.target.closest('.editBtn').id.replace('edidBtn', '');

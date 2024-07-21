@@ -31,6 +31,14 @@ button {
     border: none;
     background-color: transparent;
 }
+.like-btn-img{
+    height: 10px;
+    width: 10px;
+    background-image: url('../img/icon-heart-full.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 
 /* 15 픽셀 = 0.9375rem */
