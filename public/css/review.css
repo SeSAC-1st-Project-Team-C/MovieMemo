@@ -183,6 +183,14 @@ button {
   margin-top: 0.937rem;
   color: #fff;
 }
+.review-sort-btn{
+  display:  flex;
+  width: 30%;
+  justify-content: space-;
+}
+.sort-btn{
+  margin: 5px;
+}
 
 /* 리뷰 섹션 */
 

@@ -22,7 +22,7 @@ function updateUIForLoggedInUser(isAdmin) {
 }
 
 
-// Function to update UI for logged-out users
+// Function to update UI for logged-out usersgit st
 function updateUIForLoggedOutUser() {
   if (loginBtn) {
     loginBtn.textContent = "로그인";

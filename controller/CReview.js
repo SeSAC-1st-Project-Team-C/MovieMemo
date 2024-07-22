@@ -199,36 +199,41 @@ exports.getMovieReviewList = async (req, res) => {
 // 특정 리뷰 내용 수정
 exports.patchReview = async (req, res) => {
 
-    const { reviewId } = req.params;
-    const { reviewMovieRating : rating, content } = req.body;
-    const memberId = req.memberId;
-
+    let { reviewId } = req.params;
+    console.log('reviewId>>>>>>>>>>',reviewId);
+    const { reviewMovieRT, content } = req.body;
+    console.log(content);
+    
+    console.log('1');
     try {
         const review = await Review.findOne({
             where: { reviewId }
         });
-
+        console.log('review', review);
         if (!review) return res.status(404).json({ message: `리뷰를 찾을 수 없습니다.`});
 
         if (checkBadWords(content)) {
             return res.status(400).json({ message: "부적절한 단어가 포함되어 있습니다." });
         }
 
+        console.log('2');
         // 수정 전 영화 리뷰 평점
         const previousMovieRating = review.reviewMovieRating;
         
         // 수정 후 영화 리뷰 평점
-        review.reviewMovieRating = rating;
+        review.reviewMovieRating = reviewMovieRT;
         
         review.content = content;
         await review.save();
 
+        console.log('3');
         // 영화의 리뷰 평균 평점 업데이트
         const movie = await Movie.findOne({ where: { movieId: review.movieId } });
         const currentAvgRating = movie.avgRating;
         const totalReviews = await Review.count({ where: { movieId: review.movieId } });
-        const newAvgRating = ((currentAvgRating * totalReviews) - previousMovieRating + rating) / totalReviews;
+        const newAvgRating = (parseFloat(currentAvgRating * totalReviews) - parseFloat(previousMovieRating + parseFloat(reviewMovieRT))) / totalReviews;
 
+        console.log('4');
         await Movie.update({ avgRating: newAvgRating }, { where: { movieId: review.movieId } });
 
         return res.status(200).json(review);
