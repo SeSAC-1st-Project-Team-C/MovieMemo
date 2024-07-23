@@ -43,6 +43,9 @@ const searchInput = document.querySelector('.search-box-word');
 
 function performSearch() {
   const searchTerm = searchInput.value;
+  if(!searchTerm){
+    return alert('검색어를 입력해주세요');
+  }
   const searchMethod = SmethodElement.textContent === 'Title' ? 'searchT' : 'searchA';
   window.location.href = `/movie/${searchMethod}/${searchTerm}`;
 }
